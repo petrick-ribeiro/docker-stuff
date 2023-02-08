@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  web:
+    image: nginx:alpine
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "248M"
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8080:80"
+    networks:
+      - webserver
+networks:
+  webserver:
