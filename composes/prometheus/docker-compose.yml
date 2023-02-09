@@ -13,8 +13,6 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
-    ports:
-      - "9090:9090"
     volumes:
       - ./prom/:/etc/prometheus
       - prometheus-data:/prometheus
@@ -38,8 +36,6 @@ services:
   node-exporter:
     image: quay.io/prometheus/node-exporter:latest
     container_name: node-exporter
-    ports:
-      - "9100:9100"
     command:
       - "--path.rootfs=/host"
     volumes:
@@ -51,8 +47,6 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.0     
     container_name: cadvisor
-    ports:
-      - "8080:8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
